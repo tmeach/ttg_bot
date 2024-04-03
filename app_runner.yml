@@ -1,0 +1,19 @@
+name: daily bot worker
+
+on:
+  push:
+
+env:
+  TELEGRAM_TOKEN: ${{secrets.TELEGRAM_TOKEN}}
+  TELEGRAM_CHANEL_ID: ${{secrets.TELEGRAM_CHANEL_ID}}
+
+jobs:
+  daily-run:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: install dependencies
+        run: pip install -r requirements.txt
+      - name: run app
+        run: python app.py
