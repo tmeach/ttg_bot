@@ -21,8 +21,8 @@ def get_weather():
     # The order of variables in hourly or daily is important to assign them correctly below
     url = "https://api.open-meteo.com/v1/forecast"
     params = {
-        "latitude": 52.52,
-        "longitude": 13.41,
+        "latitude": 59.9386,
+        "longitude": 30.3141,
         "hourly": "temperature_2m",
         "forecast_days": 1
     }
@@ -59,7 +59,7 @@ def send_message(message):
     url = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage'
     params = {
         'chat_id': TELEGRAM_CHANEL_ID,
-        'text': f'```markdown \n {message}````'
+        'text': f' \n {message}'
     }
     res = requests.post(url, params=params)
     res.raise_for_status()

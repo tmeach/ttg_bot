@@ -5,13 +5,15 @@ on:
     - cron: '00 10 * * *'
 
 env:
-  TELEGRAM_TOKEN: ${{secrets.TELEGRAM_TOKEN}}
-  TELEGRAM_CHANEL_ID: ${{secrets.TELEGRAM_CHANEL_ID}}
+  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  TELEGRAM_CHANEL_ID: ${{ secrets.TELEGRAM_CHANEL_ID }}
 
 jobs:
   daily-run:
     runs-on: ubuntu-latest
-    steps: 
+    env:
+      TZ: 'Europe/Moscow' # Установка переменной окружения TZ для указания часового пояса
+    steps:
       - name: checkout code
         uses: actions/checkout@v4
       - name: install dependencies
